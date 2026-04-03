@@ -59,14 +59,19 @@
             // 
             // listView1
             // 
+            listView1.BorderStyle = BorderStyle.None;
             listView1.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader4, columnHeader5 });
             listView1.GridLines = true;
-            listView1.Location = new Point(27, 228);
+            listView1.Location = new Point(27, 98);
             listView1.Name = "listView1";
-            listView1.Size = new Size(783, 333);
+            listView1.OwnerDraw = true;
+            listView1.Size = new Size(783, 439);
             listView1.TabIndex = 3;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.Details;
+            listView1.DrawColumnHeader += listViewServicos_DrawColumnHeader;
+            listView1.DrawItem += listViewServicos_DrawItem;
+            listView1.DrawSubItem += listViewServicos_DrawSubItem;
             // 
             // columnHeader1
             // 
@@ -85,7 +90,7 @@
             // columnHeader5
             // 
             columnHeader5.Text = "Tempo";
-            columnHeader5.Width = 150;
+            columnHeader5.Width = 172;
             // 
             // UC_Services
             // 

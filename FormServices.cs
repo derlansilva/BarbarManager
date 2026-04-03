@@ -15,6 +15,12 @@ namespace Barbermanager
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
+
+            button1.BackColor = ColorTranslator.FromHtml("#354A5F");
+            button1.ForeColor = Color.White;
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.FlatAppearance.BorderSize = 0;
+           
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -51,6 +57,7 @@ namespace Barbermanager
                 // Limpar campos e atualizar a lista
                 txtNomeServico.Clear();
                 txtPrecoServico.Clear();
+                this.DialogResult = DialogResult.OK;
                 this.Close();
                 
             }

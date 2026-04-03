@@ -17,15 +17,48 @@ namespace Barbermanager
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
 
+            btnCadastrar.BackColor = ColorTranslator.FromHtml("#354A5F");
+            btnCadastrar.ForeColor = Color.White;
+            btnCadastrar.FlatStyle = FlatStyle.Flat;
+            btnCadastrar.FlatAppearance.BorderSize = 0;
+            
 
         }
 
+        private void btnNovo_Paint(object sender, PaintEventArgs e)
+        {
+            Button btn = (Button)sender;
+            int radius = 5; // Ajuste o arredondamento aqui
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+
+            using (System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath())
+            {
+                path.AddArc(0, 0, radius, radius, 180, 90);
+                path.AddArc(btn.Width - radius, 0, radius, radius, 270, 90);
+                path.AddArc(btn.Width - radius, btn.Height - radius, radius, radius, 0, 90);
+                path.AddArc(0, btn.Height - radius, radius, radius, 90, 90);
+                path.CloseAllFigures();
+                btn.Region = new Region(path);
+            }
+        }
+
+
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
+
+            if (string.IsNullOrWhiteSpace(txtNome.Text) || string.IsNullOrWhiteSpace(txtTelefone.Text))
+            {
+                MessageBox.Show("Preencha todos os campos!");
+                return;
+            }
+
             try
             {
                 using (var conn = Barbermanager.Models.DataBaseConfig.GetConnection())
                 {
+
+                   
+
                     conn.Open();
                     string sql = "INSERT INTO Clientes (Nome, Telefone) VALUES (@nome, @telefone)";
 

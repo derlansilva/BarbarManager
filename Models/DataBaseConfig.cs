@@ -8,7 +8,7 @@ namespace Barbermanager.Models
     internal class DataBaseConfig
     {
 
-        private static string dbPath = "Data Source=barbearia.db";
+        private static string dbPath = "Data Source=barberManaus.db";
 
 
         public static void InicializeBanco()
@@ -43,9 +43,17 @@ namespace Barbermanager.Models
                         Status TEXT DEFAULT 'Aguardando Confirmação',
                         FOREIGN KEY(ClienteId) REFERENCES Clientes(Id),
                         FOREIGN KEY(ServicoId) REFERENCES Servicos(Id)
-                    );";
+                    );
+                
+                CREATE TABLE IF NOT EXISTS HorariosPadrao (
+                Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                Hora TEXT NOT NULL UNIQUE
+                );
+                     ";
 
                 command.ExecuteNonQuery();
+
+                PopularHorariosIniciais(connection);
             }
         }
 
@@ -54,6 +62,27 @@ namespace Barbermanager.Models
         {
             return new SqliteConnection(dbPath);
         }
+
+        private static void PopularHorariosIniciais(SqliteConnection connection)
+        {
+            // Verifica se já existem horários para não duplicar
+            var checkCmd = connection.CreateCommand();
+            checkCmd.CommandText = "SELECT COUNT(*) FROM HorariosPadrao";
+            long count = (long)checkCmd.ExecuteScalar();
+
+            if (count == 0)
+            {
+                string[] horas = { "08:00", "09:00", "10:00", "11:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00" };
+                foreach (var h in horas)
+                {
+                    var insertCmd = connection.CreateCommand();
+                    insertCmd.CommandText = "INSERT INTO HorariosPadrao (Hora) VALUES (@hora)";
+                    insertCmd.Parameters.AddWithValue("@hora", h);
+                    insertCmd.ExecuteNonQuery();
+                }
+            }
+        }
+
 
     }
 }

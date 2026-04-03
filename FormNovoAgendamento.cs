@@ -1,4 +1,5 @@
 ﻿using Barbermanager.Models;
+using Microsoft.Data.Sqlite;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,12 +16,18 @@ namespace Barbermanager
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
+
+            btnConfirmar.BackColor = ColorTranslator.FromHtml("#354A5F");
+            btnConfirmar.ForeColor = Color.White;
+            btnConfirmar.FlatStyle = FlatStyle.Flat;
+            btnConfirmar.FlatAppearance.BorderSize = 0;
         }
 
         private void FormNovoAgendamento_Load(object sender, EventArgs e)
         {
             ConfigurarCombos();
             CarregarDadosDosCombos();
+           // CarregarHorariosDisponiveis();
         }
 
         private void ConfigurarCombos()
@@ -114,5 +121,70 @@ namespace Barbermanager
                 MessageBox.Show("Erro ao agendar: " + ex.Message);
             }
         }
+
+        private void btnNovo_Paint(object sender, PaintEventArgs e)
+        {
+            Button btn = (Button)sender;
+            int radius = 10; // Ajuste o arredondamento aqui
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+
+            using (System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath())
+            {
+                path.AddArc(0, 0, radius, radius, 180, 90);
+                path.AddArc(btn.Width - radius, 0, radius, radius, 270, 90);
+                path.AddArc(btn.Width - radius, btn.Height - radius, radius, radius, 0, 90);
+                path.AddArc(0, btn.Height - radius, radius, radius, 90, 90);
+                path.CloseAllFigures();
+                btn.Region = new Region(path);
+            }
+        }
+
+        private void dtpData_ValueChanged(object sender, EventArgs e)
+        {
+            // Quando mudar o dia, ele atualiza a lista de horários livres
+            //();
+        }
+        /*
+        private void CarregarHorariosDisponiveis()
+        {
+            cbHorario.Items.Clear();
+            string dataSelecionada = dtpData.Value.ToString("yyyy-MM-dd");
+
+            try
+            {
+                using (var conn = DataBaseConfig.GetConnection())
+                {
+                    conn.Open();
+
+                    // Query TOP: Pega horários padrão que não têm agendamento ativo naquela data
+                    string sql = @"
+                SELECT Hora FROM HorariosPadrao 
+                WHERE Hora NOT IN (
+                    SELECT Horario FROM Agendamentos 
+                    WHERE Data = @data AND Status != 'Cancelado'
+                )
+                ORDER BY Hora ASC";
+
+                    using (var cmd = new SqliteCommand(sql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@data", dataSelecionada);
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                cbHorario.Items.Add(reader.GetString(0));
+                            }
+                        }
+                    }
+                }
+
+                if (cbHorario.Items.Count > 0) cbHorario.SelectedIndex = 0;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro: " + ex.Message);
+            }
+        }
+        */
     }
 }

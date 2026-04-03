@@ -15,13 +15,37 @@ namespace Barbermanager
         {
             InitializeComponent();
             CarregarServicos();
+
+
+
+            btnNovoServiço.BackColor = ColorTranslator.FromHtml("#354A5F");
+            btnNovoServiço.ForeColor = Color.White;
+            btnNovoServiço.FlatStyle = FlatStyle.Flat;
+            btnNovoServiço.FlatAppearance.BorderSize = 0;
         }
 
+
+        private void btnNovo_Paint(object sender, PaintEventArgs e)
+        {
+            Button btn = (Button)sender;
+            int radius = 10; // Ajuste o arredondamento aqui
+            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+
+            using (System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath())
+            {
+                path.AddArc(0, 0, radius, radius, 180, 90);
+                path.AddArc(btn.Width - radius, 0, radius, radius, 270, 90);
+                path.AddArc(btn.Width - radius, btn.Height - radius, radius, radius, 0, 90);
+                path.AddArc(0, btn.Height - radius, radius, radius, 90, 90);
+                path.CloseAllFigures();
+                btn.Region = new Region(path);
+            }
+        }
         private void btnNovoServiço_Click(object sender, EventArgs e)
         {
-            using(FormServices services = new FormServices())
+            using(FormServices modal = new FormServices())
             {
-                var result = services.ShowDialog();
+                var result = modal.ShowDialog();
 
                 if (result == DialogResult.OK)
                 {
@@ -75,5 +99,48 @@ namespace Barbermanager
             }
 
         }
+
+        // 1. Desenha o Cabeçalho Azul SAP
+        private void listViewServicos_DrawColumnHeader(object sender, DrawListViewColumnHeaderEventArgs e)
+        {
+            using (SolidBrush backBrush = new SolidBrush(ColorTranslator.FromHtml("#354A5F")))
+            {
+                e.Graphics.FillRectangle(backBrush, e.Bounds);
+            }
+            TextRenderer.DrawText(e.Graphics, e.Header.Text, e.Font, e.Bounds, Color.White,
+                TextFormatFlags.VerticalCenter | TextFormatFlags.HorizontalCenter);
+        }
+
+        // 2. Desenha as Linhas Zebra e o Texto
+        private void listViewServicos_DrawSubItem(object sender, DrawListViewSubItemEventArgs e)
+        {
+            if (!e.Item.Selected)
+            {
+                Color corZebra = ColorTranslator.FromHtml("#F2F5F8");
+                using (SolidBrush backBrush = new SolidBrush(e.ItemIndex % 2 == 0 ? Color.White : corZebra))
+                {
+                    e.Graphics.FillRectangle(backBrush, e.Bounds);
+                }
+            }
+            else
+            {
+                // Cor azul de destaque quando selecionado
+                e.Graphics.FillRectangle(SystemBrushes.Highlight, e.Bounds);
+            }
+
+            // Texto (Branco se selecionado, Preto se normal)
+            Color corTexto = e.Item.Selected ? Color.White : Color.Black;
+
+            TextRenderer.DrawText(e.Graphics, e.SubItem.Text, e.Item.Font, e.Bounds,
+                corTexto, TextFormatFlags.VerticalCenter | TextFormatFlags.Left);
+        }
+
+        // 3. Método Obrigatório (vazio)
+        private void listViewServicos_DrawItem(object sender, DrawListViewItemEventArgs e)
+        {
+            // Apenas para o Windows saber que o item está sendo processado
+        }
+
+
     }
 }

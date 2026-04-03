@@ -41,56 +41,68 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(35, 120);
+            label1.Font = new Font("Arial Narrow", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(86, 28);
             label1.Name = "label1";
-            label1.Size = new Size(38, 15);
+            label1.Size = new Size(35, 16);
             label1.TabIndex = 0;
             label1.Text = "Titulo";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(35, 184);
+            label2.Font = new Font("Arial Narrow", 9F, FontStyle.Bold);
+            label2.Location = new Point(89, 90);
             label2.Name = "label2";
-            label2.Size = new Size(33, 15);
+            label2.Size = new Size(32, 16);
             label2.TabIndex = 1;
             label2.Text = "Valor";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(353, 187);
+            label3.Font = new Font("Arial Narrow", 9F, FontStyle.Bold);
+            label3.Location = new Point(216, 90);
             label3.Name = "label3";
-            label3.Size = new Size(44, 15);
+            label3.Size = new Size(40, 16);
             label3.TabIndex = 2;
             label3.Text = "Tempo";
             // 
             // txtNomeServico
             // 
-            txtNomeServico.Location = new Point(79, 120);
+            txtNomeServico.BorderStyle = BorderStyle.None;
+            txtNomeServico.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtNomeServico.Location = new Point(89, 47);
+            txtNomeServico.Multiline = true;
             txtNomeServico.Name = "txtNomeServico";
-            txtNomeServico.Size = new Size(504, 23);
+            txtNomeServico.Size = new Size(285, 32);
             txtNomeServico.TabIndex = 3;
             // 
             // txtPrecoServico
             // 
-            txtPrecoServico.Location = new Point(79, 181);
+            txtPrecoServico.BorderStyle = BorderStyle.None;
+            txtPrecoServico.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtPrecoServico.Location = new Point(89, 113);
+            txtPrecoServico.Multiline = true;
             txtPrecoServico.Name = "txtPrecoServico";
-            txtPrecoServico.Size = new Size(258, 23);
+            txtPrecoServico.Size = new Size(94, 32);
             txtPrecoServico.TabIndex = 4;
             // 
             // txtTempoServico
             // 
-            txtTempoServico.Location = new Point(406, 181);
+            txtTempoServico.BorderStyle = BorderStyle.None;
+            txtTempoServico.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtTempoServico.Location = new Point(216, 113);
+            txtTempoServico.Multiline = true;
             txtTempoServico.Name = "txtTempoServico";
-            txtTempoServico.Size = new Size(177, 23);
+            txtTempoServico.Size = new Size(158, 32);
             txtTempoServico.TabIndex = 5;
             // 
             // button1
             // 
-            button1.Location = new Point(79, 247);
+            button1.Location = new Point(89, 175);
             button1.Name = "button1";
-            button1.Size = new Size(175, 31);
+            button1.Size = new Size(285, 31);
             button1.TabIndex = 6;
             button1.Text = "Salvar";
             button1.UseVisualStyleBackColor = true;
@@ -99,9 +111,9 @@
             // progressBar1
             // 
             progressBar1.Enabled = false;
-            progressBar1.Location = new Point(79, 319);
+            progressBar1.Location = new Point(89, 235);
             progressBar1.Name = "progressBar1";
-            progressBar1.Size = new Size(504, 12);
+            progressBar1.Size = new Size(283, 12);
             progressBar1.TabIndex = 7;
             progressBar1.Visible = false;
             // 
@@ -109,7 +121,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(654, 450);
+            ClientSize = new Size(447, 284);
             Controls.Add(progressBar1);
             Controls.Add(button1);
             Controls.Add(txtTempoServico);
@@ -119,7 +131,7 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "FormServices";
-            Text = "FormServices";
+            Text = "Cadastrar Serviços";
             ResumeLayout(false);
             PerformLayout();
         }

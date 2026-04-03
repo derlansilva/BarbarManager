@@ -30,14 +30,20 @@
         {
             btnNovoCliente = new Button();
             label1 = new Label();
-            listView1 = new ListView();
+            listViewClientes = new ListView();
+            columnHeader1 = new ColumnHeader();
+            columnHeader2 = new ColumnHeader();
+            columnHeader3 = new ColumnHeader();
+            columnHeader4 = new ColumnHeader();
+            columnHeader5 = new ColumnHeader();
+            sqlCommand1 = new Microsoft.Data.SqlClient.SqlCommand();
             SuspendLayout();
             // 
             // btnNovoCliente
             // 
             btnNovoCliente.Location = new Point(609, 48);
             btnNovoCliente.Name = "btnNovoCliente";
-            btnNovoCliente.Size = new Size(169, 23);
+            btnNovoCliente.Size = new Size(169, 34);
             btnNovoCliente.TabIndex = 0;
             btnNovoCliente.Text = "Cadastrar Novo Cliente";
             btnNovoCliente.UseVisualStyleBackColor = true;
@@ -53,19 +59,56 @@
             label1.TabIndex = 1;
             label1.Text = "Clientes";
             // 
-            // listView1
+            // listViewClientes
             // 
-            listView1.Location = new Point(47, 241);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(731, 307);
-            listView1.TabIndex = 2;
-            listView1.UseCompatibleStateImageBehavior = false;
+            listViewClientes.BorderStyle = BorderStyle.None;
+            listViewClientes.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader2, columnHeader3, columnHeader4, columnHeader5 });
+            listViewClientes.GridLines = true;
+            listViewClientes.Location = new Point(47, 116);
+            listViewClientes.Name = "listViewClientes";
+            listViewClientes.OwnerDraw = true;
+            listViewClientes.Size = new Size(731, 455);
+            listViewClientes.TabIndex = 2;
+            listViewClientes.UseCompatibleStateImageBehavior = false;
+            listViewClientes.View = View.Details;
+            listViewClientes.DrawColumnHeader += listViewClientes_DrawColumnHeader;
+            listViewClientes.DrawSubItem += listViewClientes_DrawSubItem;
+            // 
+            // columnHeader1
+            // 
+            columnHeader1.Text = "Id";
+            columnHeader1.Width = 50;
+            // 
+            // columnHeader2
+            // 
+            columnHeader2.Text = "Nome";
+            columnHeader2.Width = 300;
+            // 
+            // columnHeader3
+            // 
+            columnHeader3.Text = "Telefone";
+            columnHeader3.Width = 150;
+            // 
+            // columnHeader4
+            // 
+            columnHeader4.Text = "Total Cortes";
+            columnHeader4.Width = 80;
+            // 
+            // columnHeader5
+            // 
+            columnHeader5.Text = "Fidelidade";
+            columnHeader5.Width = 150;
+            // 
+            // sqlCommand1
+            // 
+            sqlCommand1.CommandTimeout = 30;
+            sqlCommand1.EnableOptimizedParameterBinding = false;
             // 
             // UC_Clientes
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(listView1);
+            Controls.Add(listViewClientes);
             Controls.Add(label1);
             Controls.Add(btnNovoCliente);
             Name = "UC_Clientes";
@@ -78,6 +121,12 @@
 
         private Button btnNovoCliente;
         private Label label1;
-        private ListView listView1;
+        private ListView listViewClientes;
+        private ColumnHeader columnHeader1;
+        private ColumnHeader columnHeader2;
+        private ColumnHeader columnHeader3;
+        private ColumnHeader columnHeader4;
+        private ColumnHeader columnHeader5;
+        private Microsoft.Data.SqlClient.SqlCommand sqlCommand1;
     }
 }

@@ -43,7 +43,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(36, 69);
+            label1.Location = new Point(36, 42);
             label1.Name = "label1";
             label1.Size = new Size(46, 15);
             label1.TabIndex = 0;
@@ -52,15 +52,15 @@
             // cbClientes
             // 
             cbClientes.FormattingEnabled = true;
-            cbClientes.Location = new Point(88, 69);
+            cbClientes.Location = new Point(36, 70);
             cbClientes.Name = "cbClientes";
-            cbClientes.Size = new Size(473, 23);
+            cbClientes.Size = new Size(370, 23);
             cbClientes.TabIndex = 1;
             // 
             // dtpData
             // 
             dtpData.Format = DateTimePickerFormat.Short;
-            dtpData.Location = new Point(88, 168);
+            dtpData.Location = new Point(36, 208);
             dtpData.Name = "dtpData";
             dtpData.Size = new Size(160, 23);
             dtpData.TabIndex = 2;
@@ -69,18 +69,18 @@
             // 
             dtpHora.CustomFormat = "HH:mm";
             dtpHora.Format = DateTimePickerFormat.Custom;
-            dtpHora.Location = new Point(408, 168);
+            dtpHora.Location = new Point(271, 208);
             dtpHora.Name = "dtpHora";
             dtpHora.ShowUpDown = true;
-            dtpHora.Size = new Size(153, 23);
+            dtpHora.Size = new Size(135, 23);
             dtpHora.TabIndex = 3;
             // 
             // cbServicos
             // 
             cbServicos.FormattingEnabled = true;
-            cbServicos.Location = new Point(88, 119);
+            cbServicos.Location = new Point(36, 137);
             cbServicos.Name = "cbServicos";
-            cbServicos.Size = new Size(473, 23);
+            cbServicos.Size = new Size(370, 23);
             cbServicos.TabIndex = 4;
             // 
             // label2
@@ -97,19 +97,20 @@
             // 
             btnConfirmar.BackColor = SystemColors.Control;
             btnConfirmar.Font = new Font("Arial Narrow", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnConfirmar.Location = new Point(88, 249);
+            btnConfirmar.Location = new Point(36, 262);
             btnConfirmar.Name = "btnConfirmar";
-            btnConfirmar.Size = new Size(190, 33);
+            btnConfirmar.Size = new Size(370, 33);
             btnConfirmar.TabIndex = 6;
             btnConfirmar.Text = "Confirmar";
             btnConfirmar.UseVisualStyleBackColor = false;
             btnConfirmar.Click += btnConfirmar_Click;
+            btnConfirmar.Paint += btnNovo_Paint;
             // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(36, 168);
+            label3.Location = new Point(36, 190);
             label3.Name = "label3";
             label3.Size = new Size(33, 15);
             label3.TabIndex = 8;
@@ -119,7 +120,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(372, 174);
+            label4.Location = new Point(271, 190);
             label4.Name = "label4";
             label4.Size = new Size(34, 15);
             label4.TabIndex = 9;
@@ -130,7 +131,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Control;
-            ClientSize = new Size(654, 450);
+            ClientSize = new Size(447, 370);
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(btnConfirmar);

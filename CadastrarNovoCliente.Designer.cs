@@ -33,79 +33,71 @@
             btnCadastrar = new Button();
             txtNome = new TextBox();
             txtTelefone = new TextBox();
-            btnCancelar = new Button();
             progress = new ProgressBar();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(51, 86);
+            label1.Font = new Font("Arial Narrow", 9.75F, FontStyle.Bold);
+            label1.Location = new Point(51, 58);
             label1.Name = "label1";
-            label1.Size = new Size(40, 15);
+            label1.Size = new Size(37, 16);
             label1.TabIndex = 0;
             label1.Text = "Nome";
             // 
             // label2
             // 
             label2.AutoSize = true;
+            label2.Font = new Font("Arial Narrow", 9.75F, FontStyle.Bold);
             label2.Location = new Point(51, 142);
             label2.Name = "label2";
-            label2.Size = new Size(52, 15);
+            label2.Size = new Size(52, 16);
             label2.TabIndex = 1;
             label2.Text = "Telefone";
             // 
             // btnCadastrar
             // 
-            btnCadastrar.BackColor = SystemColors.Control;
+            btnCadastrar.BackColor = Color.Blue;
             btnCadastrar.FlatAppearance.BorderColor = Color.FromArgb(0, 0, 0, 0);
             btnCadastrar.FlatAppearance.BorderSize = 0;
             btnCadastrar.FlatStyle = FlatStyle.System;
             btnCadastrar.Font = new Font("Arial Narrow", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnCadastrar.ForeColor = SystemColors.ButtonHighlight;
-            btnCadastrar.Location = new Point(124, 221);
+            btnCadastrar.ForeColor = Color.White;
+            btnCadastrar.Location = new Point(51, 233);
             btnCadastrar.Name = "btnCadastrar";
-            btnCadastrar.Size = new Size(187, 30);
+            btnCadastrar.Size = new Size(343, 35);
             btnCadastrar.TabIndex = 2;
             btnCadastrar.Text = "Cadastrar";
             btnCadastrar.UseVisualStyleBackColor = false;
             btnCadastrar.Click += btnCadastrar_Click;
+            btnCadastrar.Paint += btnNovo_Paint;
             // 
             // txtNome
             // 
-            txtNome.Location = new Point(124, 83);
+            txtNome.BorderStyle = BorderStyle.None;
+            txtNome.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtNome.Location = new Point(51, 77);
             txtNome.Multiline = true;
             txtNome.Name = "txtNome";
-            txtNome.Size = new Size(426, 28);
+            txtNome.Size = new Size(343, 28);
             txtNome.TabIndex = 3;
             // 
             // txtTelefone
             // 
-            txtTelefone.Location = new Point(124, 139);
+            txtTelefone.BorderStyle = BorderStyle.None;
+            txtTelefone.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtTelefone.Location = new Point(51, 161);
             txtTelefone.Multiline = true;
             txtTelefone.Name = "txtTelefone";
-            txtTelefone.Size = new Size(426, 28);
+            txtTelefone.Size = new Size(343, 28);
             txtTelefone.TabIndex = 4;
-            // 
-            // btnCancelar
-            // 
-            btnCancelar.BackColor = Color.Red;
-            btnCancelar.FlatStyle = FlatStyle.Flat;
-            btnCancelar.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnCancelar.ForeColor = SystemColors.ButtonHighlight;
-            btnCancelar.Location = new Point(363, 221);
-            btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(187, 30);
-            btnCancelar.TabIndex = 5;
-            btnCancelar.Text = "Cancelar";
-            btnCancelar.UseCompatibleTextRendering = true;
-            btnCancelar.UseVisualStyleBackColor = false;
             // 
             // progress
             // 
-            progress.Location = new Point(124, 309);
+            progress.Location = new Point(51, 310);
             progress.Name = "progress";
-            progress.Size = new Size(426, 14);
+            progress.Size = new Size(343, 14);
             progress.TabIndex = 6;
             progress.Visible = false;
             // 
@@ -113,16 +105,15 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(654, 450);
+            ClientSize = new Size(447, 370);
             Controls.Add(progress);
-            Controls.Add(btnCancelar);
             Controls.Add(txtTelefone);
             Controls.Add(txtNome);
             Controls.Add(btnCadastrar);
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "CadastrarNovoCliente";
-            Text = "CadastrarNovoCliente";
+            Text = "Cadastrar Novo Cliente";
             ResumeLayout(false);
             PerformLayout();
         }
@@ -134,7 +125,6 @@
         private Button btnCadastrar;
         private TextBox txtNome;
         private TextBox txtTelefone;
-        private Button btnCancelar;
         private ProgressBar progress;
     }
 }
