@@ -34,14 +34,7 @@
             panel2 = new Panel();
             lblAgendamento = new Label();
             lblTotalHoje = new Label();
-            listView1 = new ListView();
-            columnHeader1 = new ColumnHeader();
-            columnHeader6 = new ColumnHeader();
-            columnHeader7 = new ColumnHeader();
-            columnHeader8 = new ColumnHeader();
-            columnHeader9 = new ColumnHeader();
-            columnHeader2 = new ColumnHeader();
-            columnHeader3 = new ColumnHeader();
+            panelGrafico = new Panel();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
@@ -107,62 +100,20 @@
             lblTotalHoje.TabIndex = 2;
             lblTotalHoje.Text = "15";
             // 
-            // listView1
+            // panelGrafico
             // 
-            listView1.BorderStyle = BorderStyle.None;
-            listView1.Columns.AddRange(new ColumnHeader[] { columnHeader1, columnHeader6, columnHeader7, columnHeader8, columnHeader9, columnHeader2, columnHeader3 });
-            listView1.FullRowSelect = true;
-            listView1.GridLines = true;
-            listView1.Location = new Point(18, 233);
-            listView1.Name = "listView1";
-            listView1.OwnerDraw = true;
-            listView1.Size = new Size(803, 333);
-            listView1.TabIndex = 3;
-            listView1.UseCompatibleStateImageBehavior = false;
-            listView1.View = View.Details;
-            listView1.DrawColumnHeader += listView1_DrawColumnHeader;
-            listView1.DrawItem += listView1_DrawItem;
-            listView1.DrawSubItem += listView1_DrawSubItem;
-            // 
-            // columnHeader1
-            // 
-            columnHeader1.Text = "ID";
-            columnHeader1.Width = 40;
-            // 
-            // columnHeader6
-            // 
-            columnHeader6.Text = "Data";
-            columnHeader6.Width = 90;
-            // 
-            // columnHeader7
-            // 
-            columnHeader7.Text = "Hora";
-            // 
-            // columnHeader8
-            // 
-            columnHeader8.Text = "Cliente";
-            columnHeader8.Width = 200;
-            // 
-            // columnHeader9
-            // 
-            columnHeader9.Text = "Serviço";
-            columnHeader9.Width = 150;
-            // 
-            // columnHeader2
-            // 
-            columnHeader2.Text = "Telefone";
-            columnHeader2.Width = 100;
-            // 
-            // columnHeader3
-            // 
-            columnHeader3.Text = "Status";
-            columnHeader3.Width = 160;
+            panelGrafico.BackColor = Color.White;
+            panelGrafico.Location = new Point(123, 243);
+            panelGrafico.Name = "panelGrafico";
+            panelGrafico.Padding = new Padding(10);
+            panelGrafico.Size = new Size(612, 309);
+            panelGrafico.TabIndex = 2;
             // 
             // UC_Home
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(listView1);
+            Controls.Add(panelGrafico);
             Controls.Add(panel2);
             Controls.Add(panel1);
             Name = "UC_Home";
@@ -182,13 +133,6 @@
         private Label lblTotalHoje;
         private Label lblGn;
         private Label lblAgendamento;
-        private ListView listView1;
-        private ColumnHeader columnHeader1;
-        private ColumnHeader columnHeader6;
-        private ColumnHeader columnHeader7;
-        private ColumnHeader columnHeader8;
-        private ColumnHeader columnHeader9;
-        private ColumnHeader columnHeader2;
-        private ColumnHeader columnHeader3;
+        private Panel panelGrafico;
     }
 }
