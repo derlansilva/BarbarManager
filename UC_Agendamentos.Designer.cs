@@ -53,10 +53,10 @@
             // Agendamentos
             // 
             Agendamentos.AutoSize = true;
-            Agendamentos.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Agendamentos.Font = new Font("Arial Narrow", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Agendamentos.Location = new Point(13, 40);
             Agendamentos.Name = "Agendamentos";
-            Agendamentos.Size = new Size(126, 21);
+            Agendamentos.Size = new Size(126, 23);
             Agendamentos.TabIndex = 0;
             Agendamentos.Text = "Agendamentos";
             // 

@@ -28,9 +28,9 @@ namespace Barbermanager
                 {
                     connection.Open();
 
-                    // 1. Defina o que os parâmetros @data e @nome significam
+                    
                     string hoje = DateTime.Now.ToString("yyyy-MM-dd");
-                    string filtroNome = "%%"; // Isso traz todos os nomes
+                    string filtroNome = "%%"; 
 
                     string sql = @"SELECT 
                     A.Id, 
@@ -107,7 +107,6 @@ namespace Barbermanager
                 TextFormatFlags.VerticalCenter | TextFormatFlags.HorizontalCenter);
         }
 
-        // 2. Desenha as Linhas Zebra e o Texto Colorido
         private void listView1_DrawSubItem(object sender, DrawListViewSubItemEventArgs e)
         {
             if (!e.Item.Selected)
@@ -131,7 +130,6 @@ namespace Barbermanager
                 corTexto, TextFormatFlags.VerticalCenter | TextFormatFlags.Left);
         }
 
-        // 3. Método obrigatório para OwnerDraw
         private void listView1_DrawItem(object sender, DrawListViewItemEventArgs e)
         {
             // Apenas deixa o Windows saber que o item está sendo processado
@@ -206,7 +204,7 @@ namespace Barbermanager
         private void Card_Paint(object sender, PaintEventArgs e)
         {
             Panel p = (Panel)sender;
-            int borderRadius = 10; // Ajuste o arredondamento aqui
+            int borderRadius = 10; 
 
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             using (System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath())
@@ -252,11 +250,13 @@ namespace Barbermanager
                 if (statusAtual == "Finalizado" || statusAtual == "Cancelado")
                 {
                     MessageBox.Show($"Este agendamento já está '{statusAtual}' e não pode mais ser alterado.",
-                "Ação Bloqueada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    "Ação Bloqueada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
                 string idAgendamento = listView1.SelectedItems[0].Text;
+                string nomeCliente = listView1.SelectedItems[0].SubItems[3].Text;
+
 
                 try
                 {
@@ -271,10 +271,30 @@ namespace Barbermanager
                             cmd.Parameters.AddWithValue("@id", idAgendamento);
                             cmd.ExecuteNonQuery();
                         }
+
+                        if(novoStatus == "Finalizado")
+                        {
+                            string sqlFid = "SELECT COUNT(*) FROM Agendamentos WHERE Status = 'Finalizado' " +
+                                    "AND ClienteId = (SELECT ClienteId FROM Agendamentos WHERE Id = @id)";
+
+                            using (var cmdFid = new Microsoft.Data.Sqlite.SqliteCommand(sqlFid, conn))
+                            {
+                                cmdFid.Parameters.AddWithValue("@id", idAgendamento);
+                                int totalCortes = Convert.ToInt32(cmdFid.ExecuteScalar());
+
+                               
+                                if (totalCortes > 0 && totalCortes % 10 == 0)
+                                {
+                                    MessageBox.Show($"⭐ CLIENTE FIEL! ⭐\n\nO cliente {nomeCliente} acabou de completar {totalCortes} cortes!\nEste atendimento deve ser GRÁTIS.",
+                                        "Programa de Fidelidade", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                            }
+                        }
                     }
 
-                    // Recarrega a lista para mostrar o novo status em tempo real
+                    
                     CarregarAgendamentos();
+                    CarregarDashboard();
                 }
                 catch (Exception ex)
                 {
