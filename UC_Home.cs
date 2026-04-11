@@ -3,7 +3,7 @@ using LiveChartsCore.SkiaSharpView;
 using LiveChartsCore.SkiaSharpView.Painting;
 using SkiaSharp;
 
-using Microsoft.Data.Sqlite; // Para o SQLite funcionar
+using Microsoft.Data.Sqlite; 
 
 using LiveChartsCore.SkiaSharpView.WinForms;
 
@@ -136,7 +136,7 @@ namespace Barbermanager
 
 
                             string mesExtenso = dt.ToString("MMMM", new System.Globalization.CultureInfo("pt-BR"));
-                            // Deixa a primeira letra maiúscula
+                          
                             mesExtenso = char.ToUpper(mesExtenso[0]) + mesExtenso.Substring(1);
                             labels.Add(mesExtenso);
                             valores.Add(Convert.ToDouble(reader["Total"]));
@@ -169,8 +169,8 @@ namespace Barbermanager
                         {
                             new LiveChartsCore.SkiaSharpView.Axis
                             {
-                                Labeler = v => v.ToString("C0"), // R$ sem centavos para limpar o visual
-                                MinStep = 100, // FORÇA A ESCALA DE 100 EM 100
+                                Labeler = v => v.ToString("C0"), 
+                                MinStep = 100, 
                                 ForceStepToMin = true,
                                 TextSize = 12
                             }
@@ -181,10 +181,10 @@ namespace Barbermanager
                         new LiveChartsCore.SkiaSharpView.Axis
                             {
                                 Labeler = v => v.ToString("C0"),
-                                // Define o intervalo fixo entre as linhas
+                              
                                 MinStep = 100,
                                 UnitWidth = 100,
-                                // Define onde o gráfico começa (geralmente zero)
+                                
                                 MinLimit = 0,
                                 TextSize = 12,
                                 SeparatorsPaint = new SolidColorPaint(SKColors.LightGray.WithAlpha(80)) { StrokeThickness = 1 }
@@ -208,7 +208,7 @@ namespace Barbermanager
             }
                 };
 
-                // AQUI AS LINHAS QUE VOCÊ MANDOU NA FOTO, CORRIGIDAS:
+               
                 graficoMensal.XAxes = new List<LiveChartsCore.SkiaSharpView.Axis> {
             new LiveChartsCore.SkiaSharpView.Axis { Labels = labels }
         };
