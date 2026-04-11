@@ -1,20 +1,63 @@
+# 💈 BarberManager Pro
 
-💈 BarberManager - Gestão de Barbearia
-Sistema Desktop moderno para controle de agendamentos, faturamento e fidelização de clientes.
-![Dashboard Principal](<img width="1053" height="646" alt="Captura de tela 2026-04-11 202037" src="https://github.com/user-attachments/assets/f34e28fd-ba0a-4af8-8280-fa8e8c5bdd10" />)
+> **Gestão inteligente para barbearias.** Um sistema desktop robusto, moderno e focado em resultados.
+
+---
+
+## 📈 Dashboard de Performance
+O coração do sistema. Projetado para dar ao barbeiro uma visão clara do seu crescimento.
+
+* **KPIs em Tempo Real:** Acompanhamento instantâneo de faturamento mensal e volume de agendamentos diários.
+* **Gráfico Semestral:** Visualização analítica da evolução financeira desenvolvida com **LiveCharts2** e motor **SkiaSharp**.
+* **Identidade Visual:** Cores estratégicas para facilitar a leitura rápida de dados.
+
+<img width="1047" height="650" alt="Captura de tela 2026-04-11 202921" src="https://github.com/user-attachments/assets/69839fb6-b8f8-436e-a59a-cd709a5fdca9" />
 
 
-<img width="1052" height="650" alt="Captura de tela 2026-04-11 202200" src="https://github.com/user-attachments/assets/95c83115-7e53-404c-ae4b-ead0d92398cd" />
-<img width="1056" height="654" alt="Captura de tela 2026-04-11 202146" src="https://github.com/user-attachments/assets/c2ca1850-0e5e-47c3-a1a3-3a133f77d263" />
-<img width="1047" height="653" alt="Captura de tela 2026-04-11 202132" src="https://github.com/user-attachments/assets/62a347c4-c2e1-4e3b-9060-6682501a8ceb" />
-<img width="1055" height="650" alt="Captura de tela 2026-04-11 202121" src="https://github.com/user-attachments/assets/610b5c4f-c0e0-4a8b-a8f3-4a8094b1dace" />
+---
 
-A tela inicial foi projetada para oferecer ao gestor uma visão rápida e analítica da saúde financeira e operacional da barbearia.
+## 🚀 Funcionalidades Principais
 
-Cards de Resumo: Exibição dinâmica dos ganhos totais do mês vigente e contagem de agendamentos para o dia atual.
+### 📅 Agenda de Serviços
+Controle total do fluxo de clientes com feedback visual por status.
+* **Status Color-Coded:** Verde (Finalizado), Azul (Confirmado), Vermelho (Cancelado).
+* **Interface Zebra:** Listagem estilizada para evitar fadiga visual.
+* **Ações Rápidas:** Atualização de status com poucos cliques.
 
-Gráfico de Desempenho: Gráfico de barras interativo (desenvolvido com LiveCharts2) que apresenta o faturamento dos últimos 6 meses, permitindo identificar tendências de crescimento.
+### 🎁 Programa de Fidelidade Automático
+Lógica de retenção de clientes integrada ao banco de dados.
+* O sistema monitora cada atendimento e notifica automaticamente via alerta quando um cliente completa **10 serviços**, permitindo oferecer o próximo corte como cortesia.
 
-Interface Responsiva: Uso de cores estratégicas (Verde para lucros, Azul para operações) para facilitar a leitura visual.
-<img width="1053" height="646" alt="Captura de tela 2026-04-11 202037" src="https://github.com/user-attachments/assets/f34e28fd-ba0a-4af8-8280-fa8e8c5bdd10" />
+### 🛠️ Gestão de Serviços e Preços
+Cadastro flexível de serviços, permitindo configurar valores e tempos estimados de atendimento.
 
+---
+
+## 🛠️ Stack Tecnológica
+
+| Componente | Tecnologia |
+| :--- | :--- |
+| **Linguagem** | C# (.NET 10) |
+| **Interface** | Windows Forms (WinForms) |
+| **Gráficos** | LiveCharts2 / SkiaSharp |
+| **Banco de Dados** | SQLite |
+| **Versionamento** | Git / GitHub |
+
+---
+
+## 💻 Como Rodar o Projeto
+
+1.  Clone o repositório:
+    ```bash
+    git clone [https://github.com/derlansilva/BarbarManager.git](https://github.com/derlansilva/BarbarManager.git)
+    ```
+2.  Abra o arquivo `.sln` no **Visual Studio 2022**.
+3.  Restaure os pacotes NuGet.
+4.  Pressione `F5` para compilar e iniciar.
+
+---
+
+## 👤 Autor
+
+**Derlan Silva** - *Desenvolvedor do Projeto*
+[![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/derlansilva)
